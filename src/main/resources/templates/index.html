@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Person Management</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .button { padding: 5px 10px; text-decoration: none; color: white; background-color: #007bff; border-radius: 3px; }
+        .button.delete { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+<h2>Person List</h2>
+<a th:href="@{/create}" class="button">Add New Person</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.id}"></td>
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.email}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${person.id})}" class="button">Edit</a>
+            <a th:href="@{/delete/{id}(id=${person.id})}" class="button delete" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

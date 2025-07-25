@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Person</title>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 100px; }
+        input { padding: 5px; }
+        .button { padding: 5px 10px; text-decoration: none; color: white; background-color: #007bff; border-radius: 3px; }
+    </style>
+</head>
+<body>
+<h2>Create Person</h2>
+<form th:action="@{/create}" th:object="${person}" method="post">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" required>
+    </div>
+    <button type="submit" class="button">Save</button>
+</form>
+<a th:href="@{/}" class="button">Back</a>
+</body>
+</html>
